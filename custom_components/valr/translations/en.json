@@ -19,11 +19,11 @@
       },
       "ott": {
         "title": "VALR One-Time Token",
-        "description": "Exchange a VALR OTT for API credentials. The partner API key needs view access and is only used for the exchange.",
+        "description": "Exchange a VALR OTT for API credentials. The view-only partner API key/secret and one-time token are only used for the exchange and are not stored.",
         "data": {
           "account_name": "Account Name",
-          "partner_api_key": "Partner API Key",
-          "partner_api_secret": "Partner API Secret",
+          "partner_api_key": "View-Only API Key",
+          "partner_api_secret": "View-Only API Secret",
           "ott_token": "One-Time Token"
         }
       },
@@ -41,7 +41,7 @@
     "error": {
       "cannot_connect": "Failed to connect to VALR API",
       "invalid_auth": "Invalid VALR API key or secret, or the key lacks required read permissions",
-      "invalid_partner_auth": "Invalid VALR partner API key or secret, or the key lacks required permissions",
+      "invalid_partner_auth": "Invalid VALR view-only API key or secret, or the key lacks required permissions",
       "invalid_ott": "Invalid or expired VALR one-time token",
       "invalid_ott_response": "VALR did not return API credentials for the one-time token",
       "unknown": "Unexpected error occurred"

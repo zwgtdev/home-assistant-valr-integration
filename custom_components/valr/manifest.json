@@ -4,9 +4,10 @@
   "codeowners": [],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://docs.valr.com",
+  "documentation": "https://github.com/zwgtdev/home-assistant-valr-integration",
   "integration_type": "service",
   "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/zwgtdev/home-assistant-valr-integration/issues",
   "requirements": [],
   "version": "0.1.0"
 }

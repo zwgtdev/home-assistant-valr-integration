@@ -1,7 +1,7 @@
 # VALR Integration for Home Assistant
 
 <p align="center">
-  <img src="custom_components/valr/valr-app-icon.png" alt="VALR" width="160">
+  <img src="custom_components/valr/brand/valr-app-icon.png" alt="VALR" width="160">
 </p>
 
 Custom Home Assistant integration for VALR wallet balances and market prices.
@@ -18,7 +18,7 @@ Custom Home Assistant integration for VALR wallet balances and market prices.
 
 ## Installation
 
-Copy this repository into Home Assistant as a custom integration or install through HACS as a custom repository, then restart Home Assistant.
+Install through HACS as a custom repository using `https://github.com/zwgtdev/home-assistant-valr-integration`, or copy this repository into Home Assistant as a custom integration, then restart Home Assistant.
 
 ## Configuration
 
@@ -30,6 +30,8 @@ Copy this repository into Home Assistant as a custom integration or install thro
 
 The integration uses VALR REST endpoints from `https://docs.valr.com`.
 
+Project documentation and issues are available at `https://github.com/zwgtdev/home-assistant-valr-integration`.
+
 ## HACS
 
-This repository is structured as a HACS custom integration. Add it to HACS as a custom repository with category **Integration**.
+This repository is structured as a HACS custom integration. Add `https://github.com/zwgtdev/home-assistant-valr-integration` to HACS as a custom repository with category **Integration**.
