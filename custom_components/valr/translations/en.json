@@ -1,0 +1,68 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "VALR Authentication",
+        "description": "Choose how to authenticate with VALR.",
+        "data": {
+          "auth_method": "Authentication Method"
+        }
+      },
+      "direct": {
+        "title": "VALR API Credentials",
+        "description": "Enter an existing VALR API key and secret. The key needs view access for balances and subaccounts.",
+        "data": {
+          "account_name": "Account Name",
+          "api_key": "API Key",
+          "api_secret": "API Secret"
+        }
+      },
+      "ott": {
+        "title": "VALR One-Time Token",
+        "description": "Exchange a VALR OTT for API credentials. The partner API key needs view access and is only used for the exchange.",
+        "data": {
+          "account_name": "Account Name",
+          "partner_api_key": "Partner API Key",
+          "partner_api_secret": "Partner API Secret",
+          "ott_token": "One-Time Token"
+        }
+      },
+      "markets": {
+        "title": "VALR Markets and Balances",
+        "data": {
+          "subaccounts": "Subaccounts",
+          "valuation_currencies": "Balance Valuation Currencies",
+          "spot_pairs": "Spot Pairs",
+          "futures_pairs": "Futures Pairs",
+          "update_interval": "Update Interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to VALR API",
+      "invalid_auth": "Invalid VALR API key or secret, or the key lacks required read permissions",
+      "invalid_partner_auth": "Invalid VALR partner API key or secret, or the key lacks required permissions",
+      "invalid_ott": "Invalid or expired VALR one-time token",
+      "invalid_ott_response": "VALR did not return API credentials for the one-time token",
+      "unknown": "Unexpected error occurred"
+    },
+    "abort": {
+      "cannot_connect": "Failed to connect to VALR API",
+      "unknown": "Unexpected error occurred"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "VALR Options",
+        "data": {
+          "subaccounts": "Subaccounts",
+          "valuation_currencies": "Balance Valuation Currencies",
+          "spot_pairs": "Spot Pairs",
+          "futures_pairs": "Futures Pairs",
+          "update_interval": "Update Interval (seconds)"
+        }
+      }
+    }
+  }
+}
