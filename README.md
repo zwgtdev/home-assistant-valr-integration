@@ -1,7 +1,7 @@
 # VALR Integration for Home Assistant
 
 <p align="center">
-  <img src="custom_components/valr/brand/valr-app-icon.png" alt="VALR" width="160">
+  <img src="custom_components/valr/brand/icon.png" alt="VALR" width="160">
 </p>
 
 Custom Home Assistant integration for VALR wallet balances and market prices.
