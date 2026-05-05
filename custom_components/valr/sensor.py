@@ -13,6 +13,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import (
     BALANCE_DATA,
+    BALANCE_ERRORS,
     CONF_ACCOUNT_NAME,
     CONF_FUTURES_PAIRS,
     CONF_SPOT_PAIRS,
@@ -271,6 +272,11 @@ class ValrBalanceSensor(CoordinatorEntity, SensorEntity):
             "included_currencies": sorted(included),
             "unpriced_currencies": sorted(set(balances) - included),
         }
+        error = (self.coordinator.data or {}).get(BALANCE_ERRORS, {}).get(
+            self._subaccount_id
+        )
+        if error:
+            attrs["last_balance_error"] = error
         for currency, balance in sorted(balances.items()):
             attrs[f"{currency}_total"] = balance.get("total")
             attrs[f"{currency}_available"] = balance.get("available")

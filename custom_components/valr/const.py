@@ -29,6 +29,7 @@ SHARED_KEY = "_shared"
 
 MARKET_DATA = "market_data"
 BALANCE_DATA = "balance_data"
+BALANCE_ERRORS = "balance_errors"
 
 PRIMARY_SUBACCOUNT_ID = "primary"
 PRIMARY_SUBACCOUNT_NAME = "Primary"

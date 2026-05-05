@@ -16,6 +16,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, Upda
 from .api import ValrApiClient, ValrApiError
 from .const import (
     BALANCE_DATA,
+    BALANCE_ERRORS,
     CONF_API_KEY,
     CONF_API_SECRET,
     CONF_FUTURES_PAIRS,
@@ -97,10 +98,24 @@ class ValrAccountCoordinator(DataUpdateCoordinator):
 
     async def _async_update_data(self) -> dict:
         balances: dict[str, dict] = {}
+        balance_errors: dict[str, str] = {}
+        existing_balances = (self.data or {}).get(BALANCE_DATA, {})
         try:
             async with asyncio.timeout(30):
                 for subaccount_id in self.subaccounts:
-                    raw = await self.client.balances(subaccount_id)
+                    try:
+                        raw = await self.client.balances(subaccount_id)
+                    except ValrApiError as err:
+                        balance_errors[subaccount_id] = str(err)
+                        if subaccount_id in existing_balances:
+                            balances[subaccount_id] = existing_balances[subaccount_id]
+                        _LOGGER.warning(
+                            "VALR balance update failed for subaccount %s: %s",
+                            subaccount_id,
+                            err,
+                        )
+                        continue
+
                     balances[subaccount_id] = {
                         "name": self.subaccount_names.get(subaccount_id, subaccount_id),
                         "balances": _normalise_balances(raw),
@@ -110,7 +125,11 @@ class ValrAccountCoordinator(DataUpdateCoordinator):
         except TimeoutError as err:
             raise UpdateFailed("VALR balance update timed out") from err
 
-        return {BALANCE_DATA: balances}
+        if not balances:
+            detail = "; ".join(balance_errors.values()) or "No balances returned"
+            raise UpdateFailed(f"VALR balance update failed: {detail}")
+
+        return {BALANCE_DATA: balances, BALANCE_ERRORS: balance_errors}
 
 
 def _normalise_balances(raw: list[dict]) -> dict[str, dict[str, float]]:
